@@ -9,7 +9,8 @@
     <div class="board">
       <div 
       @click="handleCellClick(index)" 
-      class="cell" 
+      class="cell"
+      :class="{ 'x': cell === 'X', 'o': cell === 'O' }" 
       v-for="(cell, index) in board" 
       :key="index">
         {{ cell }}
@@ -30,7 +31,7 @@ const winner = ref(null);
 const isDraw = ref(false);
 
 const handleCellClick = (index) => {
-  if (winner.value) return; 
+  if (winner.value || isDraw.value) return; 
   if (board.value[index] === null) {
     board.value[index] = currentPlayer.value;
     checkWinner();
@@ -73,7 +74,7 @@ const resetGame = () => {
 <style scoped lang="scss">
 $neon: #00f5ff;
 $neon-dim: rgba(0, 245, 255, 0.15);
-$x-color: #ff2d55;
+$x-color: #8f2dff;
 $o-color: #00f5ff;
 
 .app {
@@ -131,8 +132,6 @@ $o-color: #00f5ff;
     display: grid;
     grid-template-columns: repeat(3, 100px);
     padding: 0;
-    border: none;
-    border-radius: 0;
     background: transparent;
     position: relative;
     margin: 0 auto;
@@ -160,15 +159,34 @@ $o-color: #00f5ff;
       align-items: center;
       font-size: 3rem;
       font-weight: 700;
-      border: none;
+      border: 2px solid $neon-dim;
       cursor: pointer;
       background: transparent;
-      color: $neon;
       transition: background 0.2s ease;
       letter-spacing: 0;
 
       &:hover {
         background: $neon-dim;
+      }
+
+      &.x {
+        color: $x-color;
+        text-shadow:
+          0 0 5px  #fff,
+          0 0 15px $x-color,
+          0 0 30px $x-color,
+          0 0 60px $x-color,
+          0 0 100px $x-color;
+      }
+
+      &.o {
+        color: $o-color;
+        text-shadow:
+          0 0 5px  #fff,
+          0 0 15px $o-color,
+          0 0 30px $o-color,
+          0 0 60px $o-color,
+          0 0 100px $o-color;
       }
     }
   }
@@ -180,8 +198,8 @@ $o-color: #00f5ff;
     letter-spacing: 4px;
     text-transform: uppercase;
     background: transparent;
-    color: rgba(200, 245, 255, 0.5);
-    border: 1px solid rgba(0, 245, 255, 0.2);
+    color: rgb(200, 245, 255);
+    border: 2px solid rgba(0, 245, 255, 0.2);
     padding: 12px 32px;
     cursor: pointer;
     transition: all 0.25s ease;
