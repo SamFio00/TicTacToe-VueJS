@@ -168,13 +168,16 @@ $app-width: 300px;
 $cell-size: 100px;
 $line-thickness: 6px;
 
+/* app */
 .app {
   text-align: center;
   font-family: 'Courier New', monospace;
+  padding: 24px 16px;
 
   h1 {
-    font-size: 3rem;
-    letter-spacing: 10px;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    line-height: 1.2;
     text-transform: uppercase;
     color: #fff;
     animation: flicker 4s infinite;
@@ -187,18 +190,19 @@ $line-thickness: 6px;
   }
 
   .status {
-    font-size: 1.4rem;
-    letter-spacing: 4px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    line-height: 1.4;
     text-transform: uppercase;
     color: rgba(200, 245, 255, 0.7);
-    margin-bottom: 20px;
-    padding-left: 12px;
+    margin-bottom: 16px;
+    padding-left: 0;
     display: inline-block;
     animation: pulse-dim 1.4s ease-in-out infinite;
 
     &.winner {
-      font-size: 2rem;
-      letter-spacing: 6px;
+      font-size: 1.25rem;
+      letter-spacing: 3px;
       color: #fff;
       animation: winner-glow 1.2s ease-in-out infinite alternate;
       text-shadow:
@@ -227,8 +231,8 @@ $line-thickness: 6px;
     }
 
     &.draw {
-      font-size: 1.7rem;
-      letter-spacing: 6px;
+      font-size: 1.15rem;
+      letter-spacing: 3px;
       color: #fff;
       animation: draw-pulse 1.5s ease-in-out infinite;
       text-shadow:
@@ -238,10 +242,11 @@ $line-thickness: 6px;
     }
   }
 
+  /* board */
   .board {
     display: grid;
-    grid-template-columns: repeat(3, $cell-size);
-    width: $app-width;
+    grid-template-columns: repeat(3, 80px);
+    width: 240px;
     margin: 0 auto;
     padding: 0;
     position: relative;
@@ -297,15 +302,15 @@ $line-thickness: 6px;
       }
 
       &.row-1 {
-        top: calc(#{$cell-size} / 2 - #{$line-thickness} / 2);
+        top: calc(80px / 2 - #{$line-thickness} / 2);
       }
 
       &.row-2 {
-        top: calc(#{$cell-size} * 1.5 - #{$line-thickness} / 2);
+        top: calc(80px * 1.5 - #{$line-thickness} / 2);
       }
 
       &.row-3 {
-        top: calc(#{$cell-size} * 2.5 - #{$line-thickness} / 2);
+        top: calc(80px * 2.5 - #{$line-thickness} / 2);
       }
 
       &.column {
@@ -315,22 +320,22 @@ $line-thickness: 6px;
       }
 
       &.column-1 {
-        left: calc(#{$cell-size} / 2 - #{$line-thickness} / 2);
+        left: calc(80px / 2 - #{$line-thickness} / 2);
       }
 
       &.column-2 {
-        left: calc(#{$cell-size} * 1.5 - #{$line-thickness} / 2);
+        left: calc(80px * 1.5 - #{$line-thickness} / 2);
       }
 
       &.column-3 {
-        left: calc(#{$cell-size} * 2.5 - #{$line-thickness} / 2);
+        left: calc(80px * 2.5 - #{$line-thickness} / 2);
       }
 
       &.diagonal {
-        width: 410px;
+        width: 328px;
         height: $line-thickness;
         top: calc(50% - #{$line-thickness} / 2);
-        left: calc(50% - 205px);
+        left: calc(50% - 164px);
       }
 
       &.diagonal-1 {
@@ -343,12 +348,12 @@ $line-thickness: 6px;
     }
 
     .cell {
-      width: $cell-size;
-      height: $cell-size;
+      width: 80px;
+      height: 80px;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 3rem;
+      font-size: 2.2rem;
       font-weight: 700;
       letter-spacing: 0;
       background: transparent;
@@ -392,12 +397,13 @@ $line-thickness: 6px;
     }
   }
 
+  /* button */
   button {
-    margin-top: 32px;
-    padding: 12px 32px;
+    margin-top: 24px;
+    padding: 10px 20px;
     font-family: 'Courier New', monospace;
-    font-size: 0.8rem;
-    letter-spacing: 4px;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: rgb(200, 245, 255);
     background: transparent;
@@ -415,16 +421,17 @@ $line-thickness: 6px;
   }
 }
 
+/* credits */
 .credits {
-  margin-top: 40px;
+  margin-top: 28px;
   font-size: 1rem;
   color: rgba(200, 245, 255, 0.5);
   align-items: center;
 
   a {
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: rgba(200, 245, 255, 0.7);
-    margin: 8px;
+    margin: 6px;
 
     &:hover {
       color: white;
@@ -436,12 +443,349 @@ $line-thickness: 6px;
   }
 
   p {
-    margin-top: 2px;
-    font-size: 0.8rem;
+    margin-top: 6px;
+    font-size: 0.7rem;
+    line-height: 1.5;
     color: rgba(200, 245, 255, 0.4);
   }
 }
 
+/* tablet */
+@media (min-width: 481px) {
+  .app {
+    padding: 32px 20px;
+
+    h1 {
+      font-size: 2.4rem;
+      letter-spacing: 6px;
+    }
+
+    .status {
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+
+      &.winner {
+        font-size: 1.6rem;
+        letter-spacing: 4px;
+      }
+
+      &.draw {
+        font-size: 1.4rem;
+        letter-spacing: 4px;
+      }
+    }
+
+    .board {
+      grid-template-columns: repeat(3, 90px);
+      width: 270px;
+
+      .winning-line {
+        &.row-1 {
+          top: calc(90px / 2 - #{$line-thickness} / 2);
+        }
+
+        &.row-2 {
+          top: calc(90px * 1.5 - #{$line-thickness} / 2);
+        }
+
+        &.row-3 {
+          top: calc(90px * 2.5 - #{$line-thickness} / 2);
+        }
+
+        &.column-1 {
+          left: calc(90px / 2 - #{$line-thickness} / 2);
+        }
+
+        &.column-2 {
+          left: calc(90px * 1.5 - #{$line-thickness} / 2);
+        }
+
+        &.column-3 {
+          left: calc(90px * 2.5 - #{$line-thickness} / 2);
+        }
+
+        &.diagonal {
+          width: 370px;
+          left: calc(50% - 185px);
+        }
+      }
+
+      .cell {
+        width: 90px;
+        height: 90px;
+        font-size: 2.6rem;
+      }
+    }
+
+    button {
+      margin-top: 26px;
+      padding: 11px 24px;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+    }
+  }
+
+  .credits {
+    margin-top: 32px;
+
+    a {
+      font-size: 1.7rem;
+      margin: 6px;
+    }
+
+    p {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+/* desktop */
+@media (min-width: 769px) {
+  .app {
+    padding: 0;
+
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 10px;
+      line-height: normal;
+    }
+
+    .status {
+      font-size: 1.4rem;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+      padding-left: 12px;
+
+      &.winner {
+        font-size: 2rem;
+        letter-spacing: 6px;
+      }
+
+      &.draw {
+        font-size: 1.7rem;
+        letter-spacing: 6px;
+      }
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, $cell-size);
+      width: $app-width;
+      margin: 0 auto;
+      padding: 0;
+      position: relative;
+      background: transparent;
+      border: 2px solid $neon-dim;
+
+      &.line-x .winning-line {
+        background: $x-color;
+        box-shadow:
+          0 0 8px $x-color,
+          0 0 18px $x-color,
+          0 0 30px $x-color;
+      }
+
+      &.line-o .winning-line {
+        background: $o-color;
+        box-shadow:
+          0 0 8px $o-color,
+          0 0 18px $o-color,
+          0 0 30px $o-color;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+              rgba(0, 245, 255, 0.15),
+              rgba(0, 245, 255, 0.15)
+            )
+            33.33% 0 / 1px 100%,
+          linear-gradient(
+              rgba(0, 245, 255, 0.15),
+              rgba(0, 245, 255, 0.15)
+            )
+            66.66% 0 / 1px 100%,
+          linear-gradient(
+              rgba(0, 245, 255, 0.15),
+              rgba(0, 245, 255, 0.15)
+            )
+            0 33.33% / 100% 1px,
+          linear-gradient(
+              rgba(0, 245, 255, 0.15),
+              rgba(0, 245, 255, 0.15)
+            )
+            0 66.66% / 100% 1px;
+        background-repeat: no-repeat;
+        pointer-events: none;
+        box-shadow: 0 0 30px rgba(0, 245, 255, 0.05);
+        z-index: 1;
+      }
+
+      .winning-line {
+        position: absolute;
+        z-index: 3;
+        border-radius: 999px;
+        animation: line-grow 0.35s ease forwards;
+        transform-origin: center center;
+
+        &.row {
+          width: calc(100% - 24px);
+          height: $line-thickness;
+          left: 12px;
+        }
+
+        &.row-1 {
+          top: calc(#{$cell-size} / 2 - #{$line-thickness} / 2);
+        }
+
+        &.row-2 {
+          top: calc(#{$cell-size} * 1.5 - #{$line-thickness} / 2);
+        }
+
+        &.row-3 {
+          top: calc(#{$cell-size} * 2.5 - #{$line-thickness} / 2);
+        }
+
+        &.column {
+          width: $line-thickness;
+          height: calc(100% - 24px);
+          top: 12px;
+        }
+
+        &.column-1 {
+          left: calc(#{$cell-size} / 2 - #{$line-thickness} / 2);
+        }
+
+        &.column-2 {
+          left: calc(#{$cell-size} * 1.5 - #{$line-thickness} / 2);
+        }
+
+        &.column-3 {
+          left: calc(#{$cell-size} * 2.5 - #{$line-thickness} / 2);
+        }
+
+        &.diagonal {
+          width: 410px;
+          height: $line-thickness;
+          top: calc(50% - #{$line-thickness} / 2);
+          left: calc(50% - 205px);
+        }
+
+        &.diagonal-1 {
+          transform: rotate(45deg);
+        }
+
+        &.diagonal-2 {
+          transform: rotate(-45deg);
+        }
+      }
+
+      .cell {
+        width: $cell-size;
+        height: $cell-size;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        background: transparent;
+        border: 2px solid $neon-dim;
+        cursor: pointer;
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+        position: relative;
+        z-index: 2;
+
+        &:hover {
+          background: $neon-dim;
+        }
+
+        &.highlight {
+          background: rgba(255, 255, 255, 0.03);
+        }
+
+        &.x {
+          color: $x-color;
+          animation: symbol-pop 0.25s ease;
+          text-shadow:
+            0 0 5px #fff,
+            0 0 15px $x-color,
+            0 0 30px $x-color,
+            0 0 60px $x-color,
+            0 0 100px $x-color;
+        }
+
+        &.o {
+          color: $o-color;
+          animation: symbol-pop 0.25s ease;
+          text-shadow:
+            0 0 5px #fff,
+            0 0 15px $o-color,
+            0 0 30px $o-color,
+            0 0 60px $o-color,
+            0 0 100px $o-color;
+        }
+      }
+    }
+
+    button {
+      margin-top: 32px;
+      padding: 12px 32px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgb(200, 245, 255);
+      background: transparent;
+      border: 2px solid rgba(0, 245, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.25s ease;
+
+      &:hover {
+        color: #fff;
+        border-color: $neon;
+        box-shadow:
+          0 0 10px rgba(0, 245, 255, 0.3),
+          inset 0 0 10px rgba(0, 245, 255, 0.05);
+      }
+    }
+  }
+
+  .credits {
+    margin-top: 40px;
+    font-size: 1rem;
+    color: rgba(200, 245, 255, 0.5);
+    align-items: center;
+
+    a {
+      font-size: 2rem;
+      color: rgba(200, 245, 255, 0.7);
+      margin: 8px;
+
+      &:hover {
+        color: white;
+        text-shadow:
+          0 0 5px rgba(0, 245, 255, 0.5),
+          0 0 15px rgba(0, 245, 255, 0.3),
+          0 0 30px rgba(0, 245, 255, 0.2);
+      }
+    }
+
+    p {
+      margin-top: 2px;
+      font-size: 0.8rem;
+      color: rgba(200, 245, 255, 0.4);
+    }
+  }
+}
+
+/* animations */
 @keyframes symbol-pop {
   0% {
     opacity: 0;
